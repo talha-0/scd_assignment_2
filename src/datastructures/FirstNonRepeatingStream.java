@@ -20,7 +20,7 @@ public class FirstNonRepeatingStream {
     }
 
     public char getFirstNonRepeatingChar(){
-        if (non_repeating_char.size() == 0) 
+        if (non_repeating_char.size() == 0)
             return '-';
         return non_repeating_char.values().iterator().next();
     }
