@@ -1,13 +1,17 @@
 package datastructures;
+import exception.*;
 
 public class GenericStack<T>{
     private Node<T> head=null;
     private Node<T> tail=null;
     private int size=0;
 
-    public T pop() throws IllegalStateException {
+    public int getSize(){
+        return size;
+    }
+    public T pop() throws EmptyStackException {
         if (isEmpty()) {
-            throw new IllegalStateException("Cannot pop from an empty stack");
+            throw new EmptyStackException("Cannot pop from an empty stack");
         }
         T data = tail.data;
         if (size>1) {
@@ -21,7 +25,9 @@ public class GenericStack<T>{
         return data;
     }
 
-    public void push(T o){
+    public void push(T o) throws InvalidInputException{
+        if(o==null)
+            throw new InvalidInputException("Cannot push null to stack");
         if (size==0)
             tail = head = new Node<T>(o);
         else {

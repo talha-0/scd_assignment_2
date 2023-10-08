@@ -1,24 +1,58 @@
 import datastructures.GenericStack;
+import exception.EmptyStackException;
+import exception.InvalidInputException;
 
 public class q1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidInputException, EmptyStackException {
         GenericStack<Integer> intStack = new GenericStack<Integer>();
-        intStack.push(1);
-        intStack.push(2);
-        intStack.push(3);
+        try {
+            intStack.push(1);
+        } catch (InvalidInputException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+        try {
+            intStack.push(null);
+        } catch (InvalidInputException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+        try {
+            intStack.push(3);
+        } catch (InvalidInputException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
         System.out.println("Stack of integers: ");
         intStack.print();
-        intStack.pop();
+        try {
+            intStack.pop();
+        } catch (EmptyStackException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
         System.out.println("Stack of integers after pop: ");
         intStack.print();
 
         GenericStack<String> stringStack = new GenericStack<>();
-        stringStack.push("Hello");
-        stringStack.push("World");
+        try {
+            stringStack.push("Hello");
+        } catch (InvalidInputException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+        try {
+            stringStack.push("World");
+        } catch (InvalidInputException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
         System.out.println("Stack of strings: ");
         stringStack.print();
-        stringStack.pop();
-        stringStack.pop();
+        try {
+            stringStack.pop();
+        } catch (EmptyStackException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+        try {
+            stringStack.pop();
+        } catch (EmptyStackException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
         try {
             stringStack.pop();
         } catch (Exception e) {
